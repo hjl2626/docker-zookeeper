@@ -1,0 +1,46 @@
+version: '3.4'
+services:
+  zoo1:
+    # 使用zookeeper:3.4.14镜像，加上tag标签
+    image: hjl2626/zookeeper:3.5.9
+    restart: always
+    hostname: zoo1
+    container_name: zk1
+    ports:
+      - 2191:2181
+    volumes:
+      # 宿主机目录路径无需手工创建，docker-compose有权限进行自行创建挂载的目录路径
+      - /data/zk/zk1/data:/data
+      - /data/zk/zk1:/conf
+    networks:
+      - zk-network
+
+  zoo2:
+    image: hjl2626/zookeeper:3.5.9
+    restart: always
+    hostname: zoo2
+    container_name: zk2
+    ports:
+      - 2192:2181
+    volumes:
+      - /data/zk/zk1/data:/data
+      - /data/zk/zk1:/conf
+    networks:
+      - zk-network
+
+  zoo3:
+    image: hjl2626/zookeeper:3.5.9
+    restart: always
+    hostname: zoo3
+    container_name: zk3
+    ports:
+      - 2193:2181
+    volumes:
+      - /data/zk/zk1/data:/data
+      - /data/zk/zk1:/conf
+    networks:
+      - zk-network
+
+networks:
+  zk-network:
+    external: true
