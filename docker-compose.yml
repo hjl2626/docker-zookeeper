@@ -11,7 +11,7 @@ services:
     volumes:
       # 宿主机目录路径无需手工创建，docker-compose有权限进行自行创建挂载的目录路径
       - /data/zk/zk1/data:/data
-      - /data/zk/zk1:/conf
+      - /data/zk/zk1/conf:/opt/zookeeper/conf
     networks:
       - zk-network
 
@@ -23,8 +23,8 @@ services:
     ports:
       - 2192:2181
     volumes:
-      - /data/zk/zk1/data:/data
-      - /data/zk/zk1:/conf
+      - /data/zk/zk2/data:/data
+      - /data/zk/zk2/conf:/opt/zookeeper/conf
     networks:
       - zk-network
 
@@ -36,8 +36,8 @@ services:
     ports:
       - 2193:2181
     volumes:
-      - /data/zk/zk1/data:/data
-      - /data/zk/zk1:/conf
+      - /data/zk/zk3/data:/data
+      - /data/zk/zk3/conf:/opt/zookeeper/conf
     networks:
       - zk-network
 
