@@ -19,5 +19,5 @@ zookeeper:3.5.9
 
 
 ## 集群部署
-
+数据目录新增myid 对应相应节点
 docker-compose -f [docker-compose.yml](https://github.com/hjl2626/docker-zookeeper/blob/master/docker-compose.yml) up -d
